@@ -1,0 +1,26 @@
+1. Describe what is the primary problem you try to solve.
+We have to sort the credit card into a specific group and make sure it's okay based on the given rules, like looking at the first numbers and how many digits it has. This is different for various types of credit cards.
+
+
+2. Describe what are the secondary problems you try to solve (if there are
+any).
+We have to organize credit cards based on their type and check them using the given rules, like looking at the first numbers and the total digits. After that, we need to set up the credit card details correctly, considering the tests we did earlier. When we get a file with different credit card numbers, we should make a new file in the right format. Each entry in this file should have the credit card type, the credit card number, and any error messages. Errors happen if the credit card number in the input file has letters or other symbols instead of numbers.
+
+3. Describe what design pattern(s) you use and how (use plain text and diagrams).
+
+Given the task of constructing specific objects based on the input type, I opted to solve this problem using the factory pattern. Here's the process:
+When a client requests the creation of a particular type of output file and provides an input file with credit card numbers:
+A new RecordIO object is made. The RecordIOFactory then constructs an appropriate _filetype_RecordIO object based on the client's input filename.
+Specific logic is implemented in certain _filetype_RecordIO subclasses (such as CsvRecordIO, JsonRecordIO, and XmlRecordIO) to read records from the input file using the correct readers and then write the contents to an output file.
+The CreditCardFactory class generates a new credit card object of the relevant type.
+Different types of credit cards are created by validating inputs in specific subclasses (AmExCC, DiscoverCC, MasterCC, VisaCC).
+Utilizing the OutputRecord class, each output record in the output file is generated.
+ 
+
+4. Describe the consequences of using this/these pattern(s).
+● The factory design simplifies the creation of objects by hiding the details of how they are made.
+● Using this pattern, it becomes feasible to introduce new specific subclasses later on to manage different types of objects.
+● This promotes a flexible connection between components due to the distribution of tasks among subclasses, making it easier to make changes or add new subclasses in the future.
+● A drawback of this method is that the abstraction can make the code more difficult to understand and follow.
+
+Github Link: https://github.com/gopinathsjsu/Individual_Project_Saivikas_Thota/tree/main
